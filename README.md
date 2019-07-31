@@ -2,7 +2,7 @@
 
 > Martini sünnipäeva project
 
-###TODO
+### TODO 01.08.2019
 
 1. Lisa crumbles after eating
 2. Add eating animation
@@ -13,6 +13,7 @@
 7. Add counting
 8. Add proper hover effect
 9. Make responsive
+10. Upload to Github Pages
 
 
 ## Build Setup
