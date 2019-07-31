@@ -1,6 +1,19 @@
 # martin-synna
 
-> Martini synna project
+> Martini sünnipäeva project
+
+###TODO
+
+1. Lisa crumbles after eating
+2. Add eating animation
+3. Finish slices
+4. Add shadow
+5. Trigger the card
+6. Finish the card
+7. Add counting
+8. Add proper hover effect
+9. Make responsive
+
 
 ## Build Setup
 
