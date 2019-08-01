@@ -48,16 +48,19 @@
           class="cake-slice"
           :class="{'hidden' : hidden[n]}"
           :key="n"
-        ></div>
+        >
+          <div
+            v-for="n in 2"
+            :key="'bite' + n"
+            class="bite"
+          ></div>
+        </div>
       </div>
       <div
         class="button"
-        v-show="gameFinished"
+        :class="{'visible': gameFinished}"
       >
-        <div
-          class="martin-photo"
-          :class="{'visible': gameFinished}"
-        ></div>
+        <div class="martin-photo"></div>
       </div>
     </div>
     <div
@@ -86,7 +89,6 @@ export default {
   },
   methods: {
     generateRandomStyle(n) {
-      console.log(n);
       let bottom,
         left = null;
 
@@ -107,7 +109,7 @@ export default {
       start = moment();
     },
     finishGame() {
-      this.gameFinished = true;
+      let self = this;
       end = moment();
 
       this.duration = end.diff(start, "seconds", true);
@@ -119,6 +121,10 @@ export default {
       if (this.duration < this.bestTime) {
         localStorage.setItem("bestTime", this.duration);
       }
+
+      timerSetter = setTimeout(() => {
+        self.gameFinished = true;
+      }, 500);
     },
     setEaten(n) {
       if (this.hidden[n]) {

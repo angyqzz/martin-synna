@@ -37,6 +37,16 @@ body {
       bottom: 0;
       background: white;
       z-index: 9999;
+      opacity: 0;
+      transition: opacity .4s ease-in;
+      transition-delay: .2s;
+      pointer-events: none;
+
+      &.visible {
+        opacity: 1;
+        transition: opacity .4s ease-in;
+        transition-delay: .2s;
+      }
 
       .martin-photo {
         background: url('./assets/64214632_147023396413417_5928505064754296077_n.jpg') no-repeat;
@@ -47,16 +57,6 @@ body {
         right: 10px;
         bottom: 10px;
         border-radius: 50%;
-        opacity: 0;
-        transition: opacity .4s ease-in;
-        transition-delay: .5s;
-
-
-        &.visible {
-          opacity: 1;
-          transition: opacity .4s ease-in;
-          transition-delay: .5s;
-        }
       }
     }
 
@@ -293,10 +293,6 @@ body {
               opacity: 0;
             }
           }
-
-          &.eaten {
-            opacity: 0;
-          }
         }
 
         &.cake-mask {
@@ -307,6 +303,16 @@ body {
 
           .cake-slice {
             background: none;
+            overflow: hidden;
+
+            .bite {
+              width: 60px;
+              height: 60px;
+              position: absolute;
+              border-radius: 50%;
+              background: #fff;
+              opacity: 0;
+            }
 
             &:before {
               display: none;
@@ -314,10 +320,135 @@ body {
 
             &.hidden {
               background: #fff;
+              transition: background .2s ease-in-out;
+              transition-delay: .4s;
 
-              .crumbs {
-                &>div {
-                  display: block;
+              .bite {
+                animation: biting .1s ease-in;
+                animation-fill-mode: forwards;
+
+                &:nth-child(2) {
+                  animation-delay: .2s;
+                }
+              }
+            }
+
+            &:nth-child(1) {
+
+              .bite {
+                transform: rotate(0deg) skewy(-45deg);
+                bottom: 0;
+                left: 50px;
+
+                &:nth-child(2) {
+                  bottom: 70px;
+                  left: 88px;
+                  width: 100px;
+                  height: 100px;
+                }
+              }
+            }
+
+            &:nth-child(2) {
+              .bite {
+                transform: rotate(0deg) skewy(45deg);
+                bottom: 0;
+                left: 72px;
+
+                &:nth-child(2) {
+                  bottom: 70px;
+                  left: -10px;
+                  width: 100px;
+                  height: 100px;
+                }
+              }
+            }
+
+            &:nth-child(3) {
+              .bite {
+                transform: rotate(0deg) skewy(-45deg);
+                top: 0;
+                left: 72px;
+
+                &:nth-child(2) {
+                  top: 70px;
+                  left: -10px;
+                  width: 100px;
+                  height: 100px;
+                }
+              }
+            }
+
+            &:nth-child(4) {
+              .bite {
+                transform: rotate(0deg) skewy(45deg);
+                bottom: 0;
+                left: 72px;
+
+                &:nth-child(2) {
+                  bottom: 70px;
+                  left: -10px;
+                  width: 100px;
+                  height: 100px;
+                }
+              }
+            }
+
+            &:nth-child(5) {
+              .bite {
+                transform: rotate(0deg) skewy(-45deg);
+                left: 75px;
+                top: -3px;
+
+                &:nth-child(2) {
+                  top: 64px;
+                  left: -13px;
+                  width: 120px;
+                  height: 120px;
+                }
+              }
+            }
+
+            &:nth-child(6) {
+              .bite {
+                transform: rotate(0deg) skewy(45deg);
+                left: 49px;
+
+                &:nth-child(2) {
+                  top: 70px;
+                  left: 88px;
+                  width: 100px;
+                  height: 100px;
+                }
+              }
+            }
+
+            &:nth-child(7) {
+              .bite {
+                transform: rotate(0deg) skewy(-45deg);
+                top: 0;
+                left: 72px;
+
+                &:nth-child(2) {
+                  top: 70px;
+                  left: -10px;
+                  width: 100px;
+                  height: 100px;
+                }
+              }
+            }
+
+            &:nth-child(8) {
+              .bite {
+                transform: rotate(0deg) skewy(45deg);
+                bottom: 0;
+                left: 72px;
+
+                &:nth-child(2) {
+                  bottom: 70px;
+                  left: -10px;
+                  width: 100px;
+                  height: 100px;
                 }
               }
             }
@@ -325,5 +456,16 @@ body {
         }
       }
     }
+  }
+}
+
+
+@keyframes biting {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
