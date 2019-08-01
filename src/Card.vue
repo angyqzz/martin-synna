@@ -1,13 +1,13 @@
 <template>
-  <div class="card-overlay" :class="{'visible': visible}">
-    <div class="card">
-      <h1>Wooop wooop!</h1>
-      <h2>Palju õnne sünnipäevaks!!!</h2>
-      <p>Said ilusti virtuaalkoogiga hakkama, nüüd tuleb päriselus sama hästi teha :D</p>
-      <p>Angie</p>
-    </div>
-
-    <div class="balloon" v-for="n in 10" :key="'balloon' + n" />
+  <div
+    class="card-overlay"
+    :class="{'visible': visible}"
+  >
+    <div
+      class="balloon"
+      v-for="n in 10"
+      :key="'balloon' + n"
+    />
   </div>
 </template>
 <script>
@@ -30,11 +30,10 @@ export default {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9999999;
+  z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
   .card {
     background: #fff;
     color: rgba(33, 33, 33, 1);
@@ -116,10 +115,6 @@ export default {
     to {
       bottom: 110%;
     }
-  }
-
-  &.visible {
-    display: flex;
   }
 }
 </style>

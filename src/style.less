@@ -13,6 +13,22 @@ body {
     align-items: center;
     flex-direction: column;
 
+    .restart-game,
+    .footer {
+      z-index: 1;
+    }
+
+    .restart-game {
+      background: #ffffff30;
+      cursor: pointer;
+      padding: 6px 10px;
+      margin-bottom: 10px;
+
+      &:hover {
+        background: #ffffff6e;
+      }
+    }
+
     .button {
       position: absolute;
       top: 0;
@@ -34,19 +50,7 @@ body {
         opacity: 0;
         transition: opacity .4s ease-in;
         transition-delay: .5s;
-        cursor: pointer;
 
-        &:after {
-          content: 'Click me';
-          position: absolute;
-          bottom: 30px;
-          text-align: center;
-          left: 0;
-          right: 0;
-          font-family: 'Gochi Hand', cursive;
-          font-size: 72px;
-          text-shadow: 1px 2px 4px #46220b;
-        }
 
         &.visible {
           opacity: 1;
@@ -59,10 +63,16 @@ body {
     .card-title {
       font-family: 'Satisfy', cursive;
       font-size: 50px;
+      z-index: 1;
     }
 
     .card-text {
       font-weight: 300;
+      z-index: 1;
+
+      .achived {
+        color: rgba(205, 220, 57, 1);
+      }
     }
 
     .card-timer {
@@ -282,6 +292,10 @@ body {
             &:before {
               opacity: 0;
             }
+          }
+
+          &.eaten {
+            opacity: 0;
           }
         }
 
