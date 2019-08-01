@@ -2,12 +2,6 @@
 
 > Martini sünnipäeva project
 
-### TODO 01.08.2019
-
-1. Lisa crumbles after eating
-2. Add eating animation
-3. Upload to Github Pages
-
 ## Build Setup
 
 ```bash
