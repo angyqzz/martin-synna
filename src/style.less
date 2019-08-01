@@ -13,6 +13,49 @@ body {
     align-items: center;
     flex-direction: column;
 
+    .button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      z-index: 9999;
+
+      .martin-photo {
+        background: url('./assets/64214632_147023396413417_5928505064754296077_n.jpg') no-repeat;
+        background-size: cover;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity .4s ease-in;
+        transition-delay: .5s;
+        cursor: pointer;
+
+        &:after {
+          content: 'Click me';
+          position: absolute;
+          bottom: 30px;
+          text-align: center;
+          left: 0;
+          right: 0;
+          font-family: 'Gochi Hand', cursive;
+          font-size: 72px;
+          text-shadow: 1px 2px 4px #46220b;
+        }
+
+        &.visible {
+          opacity: 1;
+          transition: opacity .4s ease-in;
+          transition-delay: .5s;
+        }
+      }
+    }
+
     .card-title {
       font-family: 'Satisfy', cursive;
       font-size: 50px;
@@ -20,6 +63,11 @@ body {
 
     .card-text {
       font-weight: 300;
+    }
+
+    .card-timer {
+      font-size: 30px;
+      margin: 20px 0;
     }
 
     .plate {
@@ -30,7 +78,9 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 30px 0;
+      margin: 20px 0 60px 0;
+      overflow: hidden;
+      position: relative;
 
       .cake {
         width: 360px;
@@ -39,6 +89,11 @@ body {
         border-radius: 50%;
         position: relative;
         overflow: hidden;
+        box-shadow: 4px 4px 4px #00000073;
+
+        &:not(.cake-mask) {
+          position: absolute;
+        }
 
         .cake-decoration {
           font-size: 30px;
@@ -50,63 +105,208 @@ body {
           justify-content: center;
           align-items: center;
           font-family: 'Gochi Hand', cursive;
-          font-size: 60px;
-          text-shadow: 1px 2px 4px #00000066;
+          font-size: 72px;
+          text-shadow: 1px 2px 4px #46220b;
           text-align: center;
           pointer-events: none;
+          color: #ffb6b6;
+
+          .cake-sparkles {
+            height: 30px;
+            width: 30px;
+            background: rgba(233, 30, 99, 1);
+            border-radius: 50%;
+            position: absolute;
+            top: 270px;
+            left: 110px;
+            overflow: hidden;
+
+            &:before {
+              content: '';
+              position: absolute;
+              background: radial-gradient(#f7b4cb00, #b30540);
+              height: 30px;
+              width: 30px;
+              top: 0;
+              left: 0;
+            }
+
+            &:after {
+              content: '';
+              position: absolute;
+              background: fade(#fff, 15%);
+              height: 10px;
+              width: 10px;
+              border-radius: 50%;
+              top: 6px;
+              left: 6px;
+            }
+          }
+
+          .slice-borders {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 99;
+
+            &>div {
+              height: 4px;
+              background: #5d3013;
+              position: absolute;
+              margin: auto;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              top: 0;
+              box-shadow: -5px -1px 4px #5f3012;
+
+              &:before {
+                content: '';
+                position: absolute;
+                background: linear-gradient(#f7b4cb00, #ffffff08);
+                height: 4px;
+                width: 100%;
+                top: 0;
+                left: 0;
+              }
+
+
+              &:nth-child(2) {
+                transform: rotate(90deg);
+              }
+
+              &:nth-child(3) {
+                transform: rotate(45deg);
+              }
+
+              &:nth-child(4) {
+                transform: rotate(-45deg);
+              }
+            }
+          }
+
+          span {
+            z-index: 999;
+            letter-spacing: 4px;
+            transform: rotate(-9deg)
+          }
         }
 
         .cake-slice {
           width: 180px;
           height: 360px;
-          background: rgba(233, 30, 99, 1);
+          background: #6f3c1b;
           cursor: pointer;
           position: absolute;
+          transform: rotate(0deg) skewy(45deg);
+          transform-origin: 0 50%;
+
+          &:before {
+            content: '';
+            position: absolute;
+            background: linear-gradient(#6f3c1b, #4c2207);
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+          }
 
           &:nth-child(1) {
-            top: -180px;
+            top: -360px;
+
+            &:before {
+              background: linear-gradient(-55deg, #8e4a1f00 13%, #c37542 46%);
+            }
           }
 
           &:nth-child(2) {
             left: 180px;
             top: -180px;
+            transform: rotate(0deg) skewy(-45deg);
+
+            &:before {
+              background: linear-gradient(35deg, #8e4a1f00 13%, #c37542 46%);
+            }
           }
 
           &:nth-child(3) {
-            transform: rotate(90deg);
-            transform-origin: 0 50%;
-            left: 0;
-            top: 0;
+            transform: rotate(-90deg) skewy(45deg);
+            left: 360px;
           }
 
           &:nth-child(4) {
-            transform: rotate(90deg);
-            transform-origin: 0 50%;
+            transform: rotate(90deg) skewy(-45deg);
             left: 360px;
-            top: 0;
+
+            &:before {
+              background: linear-gradient(-8deg, #6f3c1b, #4c2207);
+            }
           }
 
           &:nth-child(5) {
-            transform: rotate(45deg);
-            transform-origin: 0 50%;
             left: 180px;
-            top: 0;
+            top: 180px;
+            transform: rotate(0deg) skewy(45deg);
           }
 
           &:nth-child(6) {
-            transform: rotate(-45deg);
-            transform-origin: 0 50%;
-            left: 180px;
-            top: 0;
+            left: 0;
+            top: 360px;
+            transform: rotate(0deg) skewy(-45deg);
+          }
+
+          &:nth-child(7) {
+            transform: rotate(90deg) skewy(45deg);
+            left: 0;
+
+
+            &:before {
+              background: linear-gradient(156deg, #4c22070d 13%, #c37542 46%);
+              opacity: 0.7;
+            }
+          }
+
+          &:nth-child(8) {
+            transform: rotate(-90deg) skewy(-45deg);
+            left: 0;
+
+            &:before {
+              background: linear-gradient(74deg, #8e4a1f00 13%, #c37542 46%);
+              opacity: .7;
+            }
           }
 
           &:hover {
-            background: blue;
-          }
+            background: #f44336;
 
-          &.hidden {
-            background: #fff;
-            z-index: 9999;
+            &:before {
+              opacity: 0;
+            }
+          }
+        }
+
+        &.cake-mask {
+          background: none;
+          overflow: visible;
+          z-index: 9999;
+          pointer-events: none;
+
+          .cake-slice {
+            background: none;
+
+            &:before {
+              display: none;
+            }
+
+            &.hidden {
+              background: #fff;
+
+              .crumbs {
+                &>div {
+                  display: block;
+                }
+              }
+            }
           }
         }
       }
