@@ -1,22 +1,15 @@
 <template>
   <div id="app">
     <card v-show="gameFinished"></card>
-    <div class="card-title">
-      {{gameFinished ? 'Woop, woop! Happy Birthday!' : 'Eat all the slices!'}}
-    </div>
-    <div
-      v-if="gameFinished"
-      class="card-text"
-    >
-      Wow, it took you only a {{duration}} seconds to finish that cake! <span
+    <div class="card-title">{{gameFinished ? 'Woop, woop! Happy Birthday!' : 'Eat all the slices!'}}</div>
+    <div v-if="gameFinished" class="card-text">
+      Wow, it took you only a {{duration}} seconds to finish that cake!
+      <span
         v-if="bestTime !== 1000000"
         :class="{'achived' : this.duration < this.bestTime}"
       >(Best time: {{bestTime}})</span>
     </div>
-    <div
-      class="card-text"
-      v-else
-    >Click on each slice to destroy it 😀</div>
+    <div class="card-text" v-else>Click on each slice to destroy it 😀</div>
     <div class="plate">
       <div class="cake">
         <div
@@ -28,10 +21,7 @@
         ></div>
         <div class="cake-decoration">
           <div class="slice-borders">
-            <div
-              v-for="n in 4"
-              :key="'border' + n"
-            ></div>
+            <div v-for="n in 4" :key="'border' + n"></div>
           </div>
           <span>
             Happy
@@ -39,35 +29,16 @@
           </span>
         </div>
       </div>
-      <div
-        class="cake cake-mask"
-        v-show="!gameFinished"
-      >
-        <div
-          v-for="n in 8"
-          class="cake-slice"
-          :class="{'hidden' : hidden[n]}"
-          :key="n"
-        >
-          <div
-            v-for="n in 2"
-            :key="'bite' + n"
-            class="bite"
-          ></div>
+      <div class="cake cake-mask">
+        <div v-for="n in 8" class="cake-slice" :class="{'hidden' : hidden[n]}" :key="n">
+          <div v-for="n in 2" :key="'bite' + n" class="bite"></div>
         </div>
       </div>
-      <div
-        class="button"
-        :class="{'visible': gameFinished}"
-      >
+      <div class="button" :class="{'visible': gameFinished}">
         <div class="martin-photo"></div>
       </div>
     </div>
-    <div
-      v-if="gameFinished"
-      @click="restartGame()"
-      class="restart-game"
-    >Nah, I can do better!</div>
+    <div v-if="gameFinished" @click="restartGame()" class="restart-game">Nah, I can do better!</div>
     <div class="footer">Baked with care ❤️ by Angie</div>
   </div>
 </template>
