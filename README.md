@@ -1,6 +1,7 @@
 # martin-synna
 
 > Martini sünnipäeva project
+> DEMO : https://angyqzz.github.io/martin-synna/
 
 ## Build Setup
 
